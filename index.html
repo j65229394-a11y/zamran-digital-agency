@@ -1,936 +1,378 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Zamran Digital Agency Pakistan - Professional websites, graphic design and digital services.">
-<meta name="theme-color" content="#08111f">
-
-<title>Zamran Digital Agency | Pakistan</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ZAMRAN AI BOT</title>
 
 <style>
-:root {
-  --bg:#08111f;
-  --card:#13243b;
-  --card2:#1a304d;
-  --text:#f5f7fb;
-  --muted:#aab8cc;
-  --green:#55d6be;
-  --blue:#6aa9ff;
-  --border:#2b405c;
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Arial,sans-serif;
+ background:#07111f;
+ color:white;
 }
-
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+header{
+ background:#101f35;
+ padding:20px;
+ text-align:center;
+ border-bottom:2px solid #16c784;
 }
-
-html {
-  scroll-behavior:smooth;
+header h1{color:#16c784;margin:0}
+header p{color:#aabbd0}
+.container{max-width:900px;margin:auto;padding:15px}
+.card{
+ background:#12243a;
+ border:1px solid #263c55;
+ border-radius:14px;
+ padding:18px;
+ margin:15px 0;
 }
-
-body {
-  background:var(--bg);
-  color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;
-  line-height:1.7;
+h2{font-size:19px;color:#16c784}
+select,button{
+ width:100%;
+ padding:14px;
+ margin:7px 0;
+ border-radius:9px;
+ border:none;
+ font-size:16px;
 }
-
-a {
-  text-decoration:none;
-  color:inherit;
+select{background:#203752;color:white}
+button{
+ background:#16c784;
+ color:#061522;
+ font-weight:bold;
+ cursor:pointer;
 }
-
-.container {
-  width:92%;
-  max-width:1150px;
-  margin:auto;
+button:disabled{opacity:.5}
+.times{
+ display:grid;
+ grid-template-columns:repeat(5,1fr);
+ gap:6px;
 }
-
-header {
-  position:sticky;
-  top:0;
-  z-index:100;
-  background:#08111fee;
-  border-bottom:1px solid var(--border);
+.times button{
+ font-size:13px;
+ padding:12px 2px;
 }
-
-nav {
-  min-height:75px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:15px;
+.times button.active{background:#ffca28}
+.signal{
+ text-align:center;
+ font-size:25px;
+ font-weight:bold;
+ padding:20px;
+ border-radius:12px;
+ background:#203752;
 }
-
-.logo {
-  font-size:24px;
-  font-weight:900;
+.up{color:#16c784}
+.down{color:#ff5964}
+.neutral{color:#ffca28}
+.timer{
+ font-size:38px;
+ text-align:center;
+ color:#ffca28;
+ margin:15px;
 }
-
-.logo span {
-  color:var(--green);
+.stats{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:8px;
+ text-align:center;
 }
-
-.nav-links {
-  display:flex;
-  gap:20px;
-  flex-wrap:wrap;
+.stat{
+ background:#203752;
+ padding:15px 5px;
+ border-radius:10px;
 }
-
-.nav-links a {
-  color:var(--muted);
-  font-weight:bold;
+.stat strong{
+ display:block;
+ font-size:23px;
+ color:#16c784;
+ margin-top:8px;
 }
-
-.nav-links a:hover {
-  color:var(--green);
+canvas{
+ width:100%;
+ height:220px;
+ background:#091726;
+ border-radius:10px;
 }
-
-select,input,textarea {
-  background:#0c192b;
-  color:white;
-  border:1px solid var(--border);
-  padding:13px;
-  border-radius:10px;
-  width:100%;
-  font-size:15px;
+small{color:#aabbd0}
+table{width:100%;border-collapse:collapse;font-size:13px}
+td,th{padding:10px;border-bottom:1px solid #34485e;text-align:center}
+.notice{
+ background:#382d16;
+ color:#ffdf8b;
+ padding:12px;
+ border-radius:9px;
+ line-height:1.8;
 }
-
-.language {
-  width:auto;
-  max-width:150px;
-}
-
-.btn {
-  display:inline-block;
-  background:var(--green);
-  color:#06201e;
-  padding:13px 22px;
-  border-radius:10px;
-  font-weight:bold;
-  border:none;
-  cursor:pointer;
-  text-align:center;
-  transition:.2s;
-}
-
-.btn:hover {
-  transform:translateY(-3px);
-  opacity:.9;
-}
-
-.whatsapp-btn {
-  background:#25D366;
-  color:white;
-}
-
-.blue-btn {
-  background:var(--blue);
-  color:#06172b;
-}
-
-.hero {
-  padding:90px 0;
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:35px;
-  align-items:center;
-}
-
-.badge {
-  color:var(--green);
-  font-weight:bold;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-
-.hero h1 {
-  font-size:clamp(38px,6vw,68px);
-  line-height:1.1;
-  margin:20px 0;
-}
-
-.hero p {
-  color:var(--muted);
-  font-size:18px;
-  margin-bottom:25px;
-}
-
-.hero-box {
-  background:linear-gradient(135deg,#1d4662,#182747);
-  padding:35px;
-  border:1px solid var(--border);
-  border-radius:25px;
-  box-shadow:0 15px 50px #0005;
-}
-
-.hero-box h2 {
-  font-size:28px;
-  margin-bottom:15px;
-}
-
-.hero-box p {
-  font-size:15px;
-}
-
-section {
-  padding:70px 0;
-}
-
-.section-title {
-  text-align:center;
-  margin-bottom:40px;
-}
-
-.section-title h2 {
-  font-size:36px;
-  margin-bottom:10px;
-}
-
-.section-title p {
-  color:var(--muted);
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.card {
-  background:var(--card);
-  padding:25px;
-  border:1px solid var(--border);
-  border-radius:17px;
-  transition:.25s;
-}
-
-.card:hover {
-  transform:translateY(-5px);
-  border-color:var(--green);
-}
-
-.card h3 {
-  margin:12px 0;
-}
-
-.card p {
-  color:var(--muted);
-  font-size:15px;
-}
-
-.icon {
-  font-size:35px;
-}
-
-.demo-card {
-  padding:0;
-  overflow:hidden;
-}
-
-.demo-image {
-  height:150px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  font-size:28px;
-  font-weight:bold;
-  background:linear-gradient(135deg,#276b7c,#28345c);
-}
-
-.demo-content {
-  padding:22px;
-}
-
-.demo-content p {
-  margin-bottom:15px;
-}
-
-.steps {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:20px;
-}
-
-.number {
-  color:var(--green);
-  font-size:35px;
-  font-weight:bold;
-}
-
-.contact-box {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-  background:var(--card);
-  padding:30px;
-  border-radius:20px;
-  border:1px solid var(--border);
-}
-
-.contact-info p {
-  margin:15px 0;
-  color:var(--muted);
-}
-
-.contact-info strong {
-  color:white;
-}
-
-form {
-  display:grid;
-  gap:14px;
-}
-
-textarea {
-  min-height:120px;
-  resize:vertical;
-}
-
-footer {
-  border-top:1px solid var(--border);
-  padding:30px 0;
-  text-align:center;
-  color:var(--muted);
-}
-
-.float-whatsapp {
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  z-index:999;
-  background:#25D366;
-  color:white;
-  padding:15px 20px;
-  border-radius:50px;
-  font-weight:bold;
-  box-shadow:0 5px 20px #0007;
-}
-
-.note {
-  color:var(--muted);
-  font-size:13px;
-  margin-top:10px;
-}
-
-@media(max-width:800px) {
-  .hero {
-    grid-template-columns:1fr;
-    padding:55px 0;
-  }
-
-  .grid {
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .contact-box {
-    grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:550px) {
-  nav {
-    padding:15px 0;
-  }
-
-  .nav-links {
-    width:100%;
-    justify-content:space-between;
-    gap:10px;
-  }
-
-  .nav-links a {
-    font-size:13px;
-  }
-
-  .grid,.steps {
-    grid-template-columns:1fr;
-  }
-
-  .section-title h2 {
-    font-size:28px;
-  }
-
-  .contact-box {
-    padding:20px;
-  }
+footer{text-align:center;padding:25px;color:#91a4ba}
+@media(max-width:450px){
+ .times button{font-size:11px}
+ .stats{font-size:12px}
+ .stat strong{font-size:19px}
 }
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-
 <header>
-<div class="container">
-<nav>
-
-<a href="#home" class="logo">
-ZAMRAN <span>DIGITAL</span>
-</a>
-
-<div class="nav-links">
-<a href="#home">Home</a>
-<a href="#services">Services</a>
-<a href="#demos">Demos</a>
-<a href="#about">About</a>
-<a href="#contact">Contact</a>
-</div>
-
-<select class="language" id="language">
-<option value="en">English</option>
-<option value="ur">اردو</option>
-<option value="ps">پښتو</option>
-<option value="ar">العربية</option>
-<option value="hi">हिन्दी</option>
-<option value="es">Español</option>
-<option value="fr">Français</option>
-<option value="de">Deutsch</option>
-<option value="zh">中文</option>
-<option value="tr">Türkçe</option>
-<option value="ru">Русский</option>
-<option value="pt">Português</option>
-<option value="id">Indonesia</option>
-<option value="bn">বাংলা</option>
-<option value="fa">فارسی</option>
-</select>
-
-</nav>
-</div>
+<h1>🤖 ZAMRAN AI BOT</h1>
+<p>کوٹیکس مارکیٹ اینالائزر | ڈیمو ورژن</p>
 </header>
 
-<main>
-
-<!-- HOME -->
-
-<div class="container hero" id="home">
-
-<div>
-<div class="badge">Pakistan 🇵🇰 | Worldwide Services</div>
-
-<h1>Grow Your Business Online</h1>
-
-<p>
-Welcome to Zamran Digital Agency.
-
-We provide professional website development,
-graphic design and digital services to help
-businesses grow online.
-</p>
-
-<a href="#services" class="btn">Explore Services</a>
-
-<a href="#contact" class="btn blue-btn">Order Now</a>
-</div>
-
-<div class="hero-box">
-<h2>Zamran Digital Agency</h2>
-
-<p>
-Professional Digital Solutions
-</p>
-
-<p>🌐 Website Development</p>
-<p>🎨 Graphic Design</p>
-<p>📱 Digital Marketing</p>
-<p>💻 Business Websites</p>
-<p>🌍 Worldwide Customers</p>
-
-<br>
-
-<a href="https://wa.me/923313247153"
-class="btn whatsapp-btn"
-target="_blank"
-rel="noopener">
-💬 WhatsApp Us
-</a>
-
-</div>
-</div>
-
-<!-- SERVICES -->
-
-<section id="services">
 <div class="container">
 
-<div class="section-title">
-<h2>Our 15 Digital Services</h2>
-<p>Professional services for your business.</p>
-</div>
-
-<div class="grid">
-
 <div class="card">
-<div class="icon">🌐</div>
-<h3>1. Website Design</h3>
-<p>Modern and professional website layouts.</p>
-</div>
-
-<div class="card">
-<div class="icon">💻</div>
-<h3>2. Website Development</h3>
-<p>Responsive websites for businesses.</p>
-</div>
-
-<div class="card">
-<div class="icon">🛒</div>
-<h3>3. E-commerce Website</h3>
-<p>Online shops and product catalogues.</p>
-</div>
-
-<div class="card">
-<div class="icon">📱</div>
-<h3>4. Mobile Website Design</h3>
-<p>Mobile-friendly website experiences.</p>
-</div>
-
-<div class="card">
-<div class="icon">🎨</div>
-<h3>5. Logo Design</h3>
-<p>Professional business logo concepts.</p>
-</div>
-
-<div class="card">
-<div class="icon">🖼️</div>
-<h3>6. Graphic Design</h3>
-<p>Banners, posters and social graphics.</p>
-</div>
-
-<div class="card">
-<div class="icon">🔎</div>
-<h3>7. SEO Setup</h3>
-<p>Basic search engine optimization.</p>
-</div>
-
-<div class="card">
-<div class="icon">📢</div>
-<h3>8. Social Media Setup</h3>
-<p>Professional social media profiles.</p>
-</div>
-
-<div class="card">
-<div class="icon">✍️</div>
-<h3>9. Content Writing</h3>
-<p>Website content and business descriptions.</p>
-</div>
-
-<div class="card">
-<div class="icon">🎬</div>
-<h3>10. Video Editing</h3>
-<p>Promotional videos and short clips.</p>
-</div>
-
-<div class="card">
-<div class="icon">🚀</div>
-<h3>11. Landing Pages</h3>
-<p>Professional business landing pages.</p>
-</div>
-
-<div class="card">
-<div class="icon">📩</div>
-<h3>12. Contact Forms</h3>
-<p>Customer enquiry and order forms.</p>
-</div>
-
-<div class="card">
-<div class="icon">🌍</div>
-<h3>13. Multilingual Websites</h3>
-<p>Websites with multiple language options.</p>
-</div>
-
-<div class="card">
-<div class="icon">🛠️</div>
-<h3>14. Website Maintenance</h3>
-<p>Website updates and technical support.</p>
-</div>
-
-<div class="card">
-<div class="icon">📊</div>
-<h3>15. Digital Consultation</h3>
-<p>Guidance for your online business.</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- DEMO PROJECTS -->
-
-<section id="demos">
-<div class="container">
-
-<div class="section-title">
-<h2>Our Demo Projects</h2>
-<p>Explore our website design samples.</p>
-</div>
-
-<div class="grid">
-
-<div class="card demo-card">
-<div class="demo-image">🍔 Restaurant</div>
-<div class="demo-content">
-<h3>Restaurant Website</h3>
-<p>Menu, location and customer enquiries.</p>
-<a href="#contact" class="btn">Order Website</a>
-</div>
-</div>
-
-<div class="card demo-card">
-<div class="demo-image">🏢 Company</div>
-<div class="demo-content">
-<h3>Company Website</h3>
-<p>Business profile and service presentation.</p>
-<a href="#contact" class="btn">Order Website</a>
-</div>
-</div>
-
-<div class="card demo-card">
-<div class="demo-image">🛍️ Online Store</div>
-<div class="demo-content">
-<h3>Online Store</h3>
-<p>Product catalogue and shopping layout.</p>
-<a href="#contact" class="btn">Order Website</a>
-</div>
-</div>
-
-<div class="card demo-card">
-<div class="demo-image">🏨 Hotel</div>
-<div class="demo-content">
-<h3>Hotel Website</h3>
-<p>Rooms, facilities and reservation enquiries.</p>
-<a href="#contact" class="btn">Order Website</a>
-</div>
-</div>
-
-<div class="card demo-card">
-<div class="demo-image">💇 Salon</div>
-<div class="demo-content">
-<h3>Salon Website</h3>
-<p>Services, gallery and appointments.</p>
-<a href="#contact" class="btn">Order Website</a>
-</div>
-</div>
-
-<div class="card demo-card">
-<div class="demo-image">🎓 Education</div>
-<div class="demo-content">
-<h3>School Website</h3>
-<p>Courses, admissions and school information.</p>
-<a href="#contact" class="btn">Order Website</a>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- ABOUT -->
-
-<section id="about">
-<div class="container">
-
-<div class="section-title">
-<h2>About Zamran Digital Agency</h2>
-<p>Digital services from Pakistan to the world.</p>
-</div>
-
-<div class="steps">
-
-<div class="card">
-<div class="number">01</div>
-<h3>Contact Us</h3>
-<p>Tell us about your business and your requirements.</p>
-</div>
-
-<div class="card">
-<div class="number">02</div>
-<h3>Discuss Your Order</h3>
-<p>We discuss your project, price and delivery timeline.</p>
-</div>
-
-<div class="card">
-<div class="number">03</div>
-<h3>Project Delivery</h3>
-<p>We prepare your project for review and approval.</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<!-- CONTACT AND ORDER -->
-
-<section id="contact">
-<div class="container">
-
-<div class="section-title">
-<h2>Contact & Place Your Order</h2>
-<p>Start your digital project with Zamran Digital Agency.</p>
-</div>
-
-<div class="contact-box">
-
-<div class="contact-info">
-
-<h2>Zamran Digital Agency</h2>
-
-<p>Professional Digital Services</p>
-
-<p><strong>Country:</strong> Pakistan 🇵🇰</p>
-
-<p><strong>WhatsApp:</strong> +92 331 3247153</p>
-
-<p><strong>Available Services:</strong> 15</p>
-
-<br>
-
-<a href="https://wa.me/923313247153"
-class="btn whatsapp-btn"
-target="_blank"
-rel="noopener">
-💬 Chat on WhatsApp
-</a>
-
-<p class="note">
-Click the WhatsApp button to contact our business.
-</p>
-
-</div>
-
-<!-- ORDER FORM -->
-
-<form id="orderForm">
-
-<h2>Order Details</h2>
-
-<input
-type="text"
-id="customerName"
-placeholder="Your Full Name"
-required>
-
-<input
-type="email"
-id="customerEmail"
-placeholder="Your Email Address"
-required>
-
-<select id="customerCountry" required>
-<option value="">Select Your Country</option>
-<option>Pakistan 🇵🇰</option>
-<option>Saudi Arabia 🇸🇦</option>
-<option>United Arab Emirates 🇦🇪</option>
-<option>United States 🇺🇸</option>
-<option>United Kingdom 🇬🇧</option>
-<option>India 🇮🇳</option>
-<option>Other Country</option>
+<h2>📊 مارکیٹ منتخب کریں</h2>
+<select id="pair">
+<option>EUR/USD</option>
+<option>GBP/USD</option>
+<option>USD/JPY</option>
+<option>AUD/USD</option>
+<option>USD/CHF</option>
+<option>EUR/GBP</option>
 </select>
+</div>
 
-<select id="orderService" required>
-<option value="">Select Your Service</option>
-<option>Website Design</option>
-<option>Website Development</option>
-<option>E-commerce Website</option>
-<option>Mobile Website Design</option>
-<option>Logo Design</option>
-<option>Graphic Design</option>
-<option>SEO Setup</option>
-<option>Social Media Setup</option>
-<option>Content Writing</option>
-<option>Video Editing</option>
-<option>Landing Pages</option>
-<option>Contact Forms</option>
-<option>Multilingual Websites</option>
-<option>Website Maintenance</option>
-<option>Digital Consultation</option>
-</select>
+<div class="card">
+<h2>⏱️ ٹائم فریم منتخب کریں</h2>
+<div class="times">
+<button class="active" data-time="5">5 سیکنڈ</button>
+<button data-time="15">15 سیکنڈ</button>
+<button data-time="30">30 سیکنڈ</button>
+<button data-time="60">1 منٹ</button>
+<button data-time="300">5 منٹ</button>
+</div>
+</div>
 
-<input
-type="text"
-id="budget"
-placeholder="Your Budget (Optional)">
+<div class="card">
+<h2>🕯️ ڈیمو کینڈل چارٹ</h2>
+<canvas id="chart" width="800" height="220"></canvas>
+<small>یہ فرضی ڈیٹا ہے، حقیقی مارکیٹ چارٹ نہیں۔</small>
+</div>
 
-<textarea
-id="orderDetails"
-placeholder="Write your complete order details..."
-required></textarea>
+<div class="card">
+<h2>⏳ اگلی کینڈل کا کاؤنٹ ڈاؤن</h2>
+<div class="timer" id="timer">05</div>
+<p style="text-align:center">اگلی کینڈل شروع ہونے میں وقت</p>
+</div>
 
-<button type="submit" class="btn whatsapp-btn">
-📦 Send Order on WhatsApp
-</button>
-
-<p class="note">
-Your order details will open in WhatsApp.
-You must press Send to submit your order.
+<div class="card">
+<h2>🤖 اے آئی ڈیمو تجزیہ</h2>
+<div class="signal neutral" id="signal">
+تجزیہ شروع کریں
+</div>
+<button id="analyze">🔍 ڈیمو تجزیہ کریں</button>
+<p id="detail" style="text-align:center;color:#aabbd0">
+ابھی کوئی تجزیہ نہیں ہوا۔
 </p>
+</div>
 
-</form>
+<div class="card">
+<h2>🎯 ڈیمو کارکردگی</h2>
+<div class="stats">
+<div class="stat">کل سگنلز<strong id="total">0</strong></div>
+<div class="stat">درست<strong id="correct">0</strong></div>
+<div class="stat">غلط<strong id="wrong">0</strong></div>
+</div>
+<h2>درستگی کی شرح</h2>
+<div class="signal neutral" id="accuracy">0%</div>
+</div>
 
+<div class="card">
+<h2>📜 سگنل ہسٹری</h2>
+<div style="overflow-x:auto">
+<table>
+<thead>
+<tr>
+<th>وقت</th>
+<th>ٹائم فریم</th>
+<th>ڈیمو سگنل</th>
+<th>نتیجہ</th>
+</tr>
+</thead>
+<tbody id="history">
+<tr><td colspan="4">ابھی کوئی ریکارڈ نہیں۔</td></tr>
+</tbody>
+</table>
 </div>
 </div>
-</section>
 
-</main>
+<div class="card notice">
+<strong>⚠️ اہم وضاحت</strong><br>
+یہ ایک تعلیمی ڈیمو سافٹ ویئر ہے۔ اس میں فرضی مارکیٹ ڈیٹا استعمال ہوتا ہے۔ یہ Quotex سے منسلک نہیں ہے اور حقیقی مارکیٹ کی اگلی کینڈل کی پیش گوئی نہیں کرتا۔ اس کی Accuracy حقیقی ٹریڈنگ کی کامیابی نہیں ہے۔ 100% درستگی کی ضمانت ممکن نہیں۔
+</div>
 
-<!-- FOOTER -->
+</div>
 
 <footer>
-<div class="container">
-
-<h3>ZAMRAN DIGITAL AGENCY</h3>
-
-<p>Pakistan 🇵🇰 | Worldwide Digital Services</p>
-
-<p>Website Development • Design • Digital Solutions</p>
-
-<p>
-WhatsApp: +92 331 3247153
-</p>
-
-<p>
-© <span id="year"></span> Zamran Digital Agency.
-All Rights Reserved.
-</p>
-
-</div>
+ZAMRAN AI BOT © 2026<br>
+Developer: Zamran
 </footer>
 
-<!-- FLOATING WHATSAPP BUTTON -->
-
-<a href="https://wa.me/923313247153"
-class="float-whatsapp"
-target="_blank"
-rel="noopener">
-💬 WhatsApp
-</a>
-
-<!-- JAVASCRIPT -->
-
 <script>
+const $=id=>document.getElementById(id);
 
-// CURRENT YEAR
+let timeframe=5;
+let remaining=5;
+let total=0,correct=0,wrong=0;
+let pending=null;
+let candles=[];
+let history=[];
 
-document.getElementById("year").textContent =
-new Date().getFullYear();
-
-
-// WHATSAPP ORDER SYSTEM
-
-document.getElementById("orderForm")
-.addEventListener("submit",function(event){
-
-event.preventDefault();
-
-const name =
-document.getElementById("customerName").value.trim();
-
-const email =
-document.getElementById("customerEmail").value.trim();
-
-const country =
-document.getElementById("customerCountry").value;
-
-const service =
-document.getElementById("orderService").value;
-
-const budget =
-document.getElementById("budget").value;
-
-const details =
-document.getElementById("orderDetails").value.trim();
-
-const whatsappNumber = "923313247153";
-
-const message =
-
-"NEW ORDER - ZAMRAN DIGITAL AGENCY\n\n" +
-
-"Customer Name: " + name + "\n" +
-
-"Email: " + email + "\n" +
-
-"Country: " + country + "\n" +
-
-"Service: " + service + "\n" +
-
-"Budget: " + (budget || "Not specified") + "\n\n" +
-
-"Order Details:\n" + details + "\n\n" +
-
-"Thank you for choosing Zamran Digital Agency!";
-
-const whatsappURL =
-"https://wa.me/" + whatsappNumber +
-"?text=" + encodeURIComponent(message);
-
-window.open(whatsappURL,"_blank");
-
-});
-
-
-// LANGUAGE SELECTOR
-
-const translations = {
-
-ur: {
-title:"اپنے کاروبار کو آن لائن ترقی دیں",
-services:"ہماری 15 ڈیجیٹل خدمات",
-contact:"رابطہ اور آرڈر",
-home:"ہوم"
-},
-
-ps: {
-title:"خپل کاروبار آنلاین پرمختګ کړئ",
-services:"زموږ ۱۵ ډیجیټل خدمتونه",
-contact:"اړیکه او فرمایش",
-home:"کور"
-},
-
-ar: {
-title:"طوّر أعمالك عبر الإنترنت",
-services:"خدماتنا الرقمية الـ15",
-contact:"الاتصال وطلب الخدمة",
-home:"الرئيسية"
-},
-
-hi: {
-title:"अपने व्यवसाय को ऑनलाइन बढ़ाएँ",
-services:"हमारी 15 डिजिटल सेवाएँ",
-contact:"संपर्क और ऑर्डर",
-home:"होम"
+function makeCandles(){
+ let price=100;
+ candles=[];
+ for(let i=0;i<35;i++){
+  let open=price;
+  let close=open+(Math.random()-.5)*3;
+  let high=Math.max(open,close)+Math.random();
+  let low=Math.min(open,close)-Math.random();
+  candles.push({open,close,high,low});
+  price=close;
+ }
 }
 
-};
+function drawChart(){
+ const canvas=$("chart");
+ const ctx=canvas.getContext("2d");
+ ctx.clearRect(0,0,800,220);
+ let min=Math.min(...candles.map(c=>c.low));
+ let max=Math.max(...candles.map(c=>c.high));
+ let scale=180/(max-min||1);
 
-document.getElementById("language")
-.addEventListener("change",function(){
-
-const lang = this.value;
-
-document.documentElement.lang = lang;
-
-document.documentElement.dir =
-["ur","ar","fa"].includes(lang) ? "rtl" : "ltr";
-
-if(translations[lang]) {
-
-document.querySelector(".hero h1").textContent =
-translations[lang].title;
-
-document.querySelector("#services h2").textContent =
-translations[lang].services;
-
-document.querySelector("#contact h2").textContent =
-translations[lang].contact;
-
+ candles.forEach((c,i)=>{
+  let x=12+i*22;
+  let y=v=>195-(v-min)*scale;
+  ctx.strokeStyle=c.close>=c.open?"#16c784":"#ff5964";
+  ctx.fillStyle=ctx.strokeStyle;
+  ctx.beginPath();
+  ctx.moveTo(x+5,y(c.high));
+  ctx.lineTo(x+5,y(c.low));
+  ctx.stroke();
+  let top=Math.min(y(c.open),y(c.close));
+  let height=Math.max(2,Math.abs(y(c.open)-y(c.close)));
+  ctx.fillRect(x,top,10,height);
+ });
 }
 
+function formatTime(seconds){
+ return seconds>=60?
+ Math.floor(seconds/60)+":"+String(seconds%60).padStart(2,"0"):
+ String(seconds).padStart(2,"0");
+}
+
+function updateTimer(){
+ $("timer").textContent=formatTime(remaining);
+}
+
+function updateStats(){
+ $("total").textContent=total;
+ $("correct").textContent=correct;
+ $("wrong").textContent=wrong;
+ $("accuracy").textContent=
+ total?((correct/total)*100).toFixed(1)+"%":"0%";
+}
+
+function newSignal(){
+ if(pending)return;
+
+ const directions=["UP","DOWN","NEUTRAL"];
+ const direction=directions[Math.floor(Math.random()*3)];
+
+ pending={
+  direction,
+  pair:$("pair").value,
+  timeframe,
+  start:Date.now()
+ };
+
+ $("signal").textContent=
+ direction==="UP"?"🟢 اوپر جانے کا فرضی اندازہ":
+ direction==="DOWN"?"🔴 نیچے جانے کا فرضی اندازہ":
+ "🟡 واضح سمت نہیں";
+
+ $("signal").className="signal "+
+ (direction==="UP"?"up":direction==="DOWN"?"down":"neutral");
+
+ $("detail").textContent=
+ "یہ فرضی ڈیمو سگنل ہے۔ اسے حقیقی مارکیٹ کی پیش گوئی نہ سمجھیں۔";
+
+ $("analyze").disabled=true;
+}
+
+function finishSignal(){
+ if(!pending)return;
+
+ // Demonstration outcome only, not a real candle result.
+ const outcomes=["UP","DOWN"];
+ const simulatedOutcome=outcomes[Math.floor(Math.random()*2)];
+
+ const result=pending.direction==="NEUTRAL"?
+ "غیر جانبدار":
+ pending.direction===simulatedOutcome?"درست":"غلط";
+
+ total++;
+ if(result==="درست")correct++;
+ if(result==="غلط")wrong++;
+
+ const row={
+  time:new Date().toLocaleTimeString(),
+  timeframe:pending.timeframe,
+  direction:pending.direction,
+  result
+ };
+
+ history.unshift(row);
+ history=history.slice(0,20);
+
+ $("history").innerHTML=history.map(r=>
+ `<tr>
+ <td>${r.time}</td>
+ <td>${r.timeframe} سیکنڈ</td>
+ <td>${r.direction}</td>
+ <td>${r.result}</td>
+ </tr>`
+ ).join("");
+
+ updateStats();
+ pending=null;
+ $("analyze").disabled=false;
+ $("detail").textContent="ڈیمو سائیکل مکمل ہوگیا۔";
+}
+
+function tick(){
+ remaining--;
+ if(remaining<=0){
+  remaining=timeframe;
+  if(pending)finishSignal();
+  makeCandles();
+  drawChart();
+ }
+ updateTimer();
+}
+
+document.querySelectorAll("[data-time]").forEach(button=>{
+ button.addEventListener("click",()=>{
+  timeframe=Number(button.dataset.time);
+  remaining=timeframe;
+  document.querySelectorAll("[data-time]").forEach(b=>
+   b.classList.remove("active")
+  );
+  button.classList.add("active");
+  updateTimer();
+ });
 });
 
+$("analyze").addEventListener("click",newSignal);
+
+makeCandles();
+drawChart();
+updateTimer();
+updateStats();
+setInterval(tick,1000);
 </script>
 
 </body>
